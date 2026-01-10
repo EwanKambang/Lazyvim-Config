@@ -21,7 +21,7 @@ return {
   {
     "webhooked/kanso.nvim",
     lazy = false,
-    priority = 1000,
+    -- priority = 1000,
     opts = {
       transparent = true,
       dimInactive = false,

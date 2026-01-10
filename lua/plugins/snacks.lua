@@ -16,7 +16,7 @@ return {
         { section = "startup" },
         {
           section = "terminal",
-          cmd = "ascii-image-converter ~/Downloads/eye2.jpg -b -C --dither",
+          cmd = "ascii-image-converter ~/Downloads/2024-05-Randall-Earth-core-1199314969-iStock_AlexLMX.jpg -b -C --dither",
           random = 10,
           pane = 2,
           indent = 4,
