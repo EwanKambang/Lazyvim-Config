@@ -16,7 +16,7 @@ return {
         { section = "startup" },
         {
           section = "terminal",
-          cmd = "ascii-image-converter ~/Downloads/eye2.jpg -b -C --dither",
+          cmd = "ascii-image-converter ~/.config/nvim/Images/000047325-29.jpg -b -C --dither",
           random = 10,
           pane = 2,
           indent = 4,
