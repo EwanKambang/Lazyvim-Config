@@ -15,7 +15,7 @@ return {
         scratch_repl = true,
         repl_definition = {
           python = {
-            command = { "python3" },
+            command = { "ipython3" },
           },
           lua = {
             command = { "lua" },
