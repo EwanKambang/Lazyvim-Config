@@ -15,7 +15,11 @@ return {
         scratch_repl = true,
         repl_definition = {
           python = {
-            command = { "bash", "-lc", "uv run ipython3" },
+            command = {
+              "bash",
+              "-lc",
+              [[cd "$(dirname "$(realpath "%:p")")" && uv run python -m IPython]],
+            },
           },
           lua = {
             command = { "lua" },
