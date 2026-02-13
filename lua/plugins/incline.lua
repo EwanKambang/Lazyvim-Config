@@ -3,7 +3,6 @@ return {
   event = "BufReadPre",
   enabled = true,
   config = function()
-    local colors = require("tokyonight.colors").setup()
     require("incline").setup({
       highlight = {
         groups = {
