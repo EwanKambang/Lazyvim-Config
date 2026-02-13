@@ -4,9 +4,6 @@ return {
   lazy = false,
   ---@type snacks.Config
   opts = {
-    -- your configuration comes here
-    -- or leave it empty to use the default settings
-    -- refer to the configuration section below
     bigfile = { enabled = true },
     dashboard = {
       enabled = true,
@@ -14,6 +11,7 @@ return {
         { section = "header" },
         { section = "keys", gap = 1, padding = 1 },
         { section = "startup" },
+        -- terminal section is conditionally enabled in config()
         {
           section = "terminal",
           cmd = "ascii-image-converter ~/.config/nvim/Images/2024-05-Randall-Earth-core-1199314969-iStock_AlexLMX.jpg -b -C --dither",
@@ -36,6 +34,24 @@ return {
     words = { enabled = true },
   },
   config = function(_, opts)
+    -- Conditionally drop dashboard terminal if dependency is missing
+    local function filter_dashboard_terminal()
+      if not opts or not opts.dashboard or not opts.dashboard.sections then
+        return
+      end
+      if vim.fn.executable("ascii-image-converter") ~= 1 then
+        local filtered = {}
+        for _, sec in ipairs(opts.dashboard.sections) do
+          if not (type(sec) == "table" and sec.section == "terminal") then
+            table.insert(filtered, sec)
+          end
+        end
+        opts.dashboard.sections = filtered
+      end
+    end
+
+    filter_dashboard_terminal()
+
     -- initialize Snacks with your options
     require("snacks").setup(opts)
 
@@ -114,9 +130,9 @@ return {
     {
       "<leader>fg",
       function()
-        Snacks.picker.git_files()
+        Snacks.picker.grep()
       end,
-      desc = "Find Git Files",
+      desc = "Grep",
     },
     {
       "<leader>fp",
