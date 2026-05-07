@@ -1,7 +1,7 @@
 return {
   -- Install the colorscheme and make it available early
   {
-    "gremble0/yellowbeans.nvim",
+    "dasch/vim-mocha",
     lazy = false,
     priority = 1000,
   },
@@ -9,7 +9,7 @@ return {
   {
     "LazyVim/LazyVim",
     opts = {
-      colorscheme = "yellowbeans",
+      colorscheme = "mocha",
     },
   },
 }
